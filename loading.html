@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<title>Slimbox 2 example page</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<script type="text/javascript" src="microbox/microbox.js"></script>
+	<link rel="stylesheet" href="microbox/microbox.css" type="text/css" media="screen" />
+	<style type="text/css">
+		body {
+			background-color: #fff;
+			font-family: arial, helvetica, sans-serif;
+			color: #000;
+		}
+		h1, p {
+			text-align: center;
+		}
+		p {
+			margin-top: 100px;
+		}
+		a {
+			font-weight: bold;
+			color: #f00;
+		}
+	</style>
+</head>
+<body>
+
+	<a href="javascript:mb.open(contentLoader);">Open Incentive example</a><br />
+	<a href="javascript:mb.open(formLoader);">Open Form example</a>
+
+
+	
+
+	<script>
+		function closed() {
+			//console.log('closed');
+		}
+		jQuery(document).bind('custom', function() {
+			console.log('event triggered', arguments);
+		});
+		var mb = jQuery.microbox({
+			width: 356
+		});
+		function contentLoader(cb) {
+			jQuery.ajax({
+				url: "content.php",
+				success: function(data){
+					cb.call(this, data);
+				}
+			});
+		}
+		function formLoader(cb) {
+			jQuery.ajax({
+				url: "form.php",
+				success: function(data){
+					cb.call(this, data);
+				}
+			});
+		}
+	</script>
+</body>
+</html>

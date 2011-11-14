@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<title>Slimbox 2 example page</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="microbox/microbox.js"></script>
+	<link rel="stylesheet" href="microbox/microbox.css" type="text/css" media="screen" />
+	<style type="text/css">
+		body {
+			background-color: #fff;
+			font-family: arial, helvetica, sans-serif;
+			color: #000;
+		}
+		h1, p {
+			text-align: center;
+		}
+		p {
+			margin-top: 100px;
+		}
+		a {
+			font-weight: bold;
+			color: #f00;
+		}
+	</style>
+</head>
+<body>
+
+<a href="javascript:mb.open();">Open box</a>
+
+	<div id="mbox" class="mbox_overlay">
+		<div id="light" class="mbox_border mbox_transparent mbox_round5">
+			<div class="mbox_content">
+				<h2 class="mbox_title">Record your testimonial <span class="mbox_icon mbox_icon_cross"></span></h2>
+				<div class="mbox_main">
+
+<object id="bbrecorder" name="bbrecorder" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="336" height="270">
+	<param name="wmode" value="transparent">
+	<param name="allowScriptAccess" value="always">
+	<param name="allowNetworking" value="all">
+	<param name="flashvars" value="user_id=8&amp;video_groupkey=&amp;micrate=44&amp;bandbreedte=0&amp;form=0&amp;ln=en&amp;widget_id=9&amp;quality=95&amp;fps=24&amp;bandwidth=0&amp;tags=&amp;widget_location=http%3A%2F%2Frecord.bubobox.com%2F">
+	<param name="movie" value="http://cdn.bubobox.com/recorder/v_2_4_0/record.swf?v240">
+<!--[if !IE]>-->
+<object id="bbrecorder" name="bbrecorder" width="336" height="270" data="http://cdn.bubobox.com/recorder/v_2_4_0/record.swf?v240">
+	<param name="wmode" value="transparent">
+	<param name="allowScriptAccess" value="always">
+	<param name="allowNetworking" value="all">
+	<param name="flashvars" value="user_id=8&amp;video_groupkey=&amp;micrate=44&amp;bandbreedte=0&amp;form=0&amp;ln=en&amp;widget_id=9&amp;quality=95&amp;fps=24&amp;bandwidth=0&amp;tags=&amp;widget_location=http%3A%2F%2Frecord.bubobox.com%2F">
+<!--<![endif]-->
+<p><img src="http://cdn.bubobox.com/widget/v_3_3_0b16//assets/images/noflashplayer.jpg"></p>
+<!--[if !IE]>-->
+</object>
+<!--<![endif]-->
+</object>
+	
+	</div>
+</div>
+</div>
+
+		</div>
+	</div>
+
+	<script>
+		function closed() {
+			console.log('closed');
+		}
+		var mb = jQuery("#mbox").microbox({onClosed : closed,
+			width: 356
+		});
+	</script>
+</body>
+</html>

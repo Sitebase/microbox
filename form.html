@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<title>Slimbox 2 example page</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="microbox/microbox.js"></script>
+	<link rel="stylesheet" href="microbox/microbox.css" type="text/css" media="screen" />
+	<style type="text/css">
+		body {
+			background-color: #fff;
+			font-family: arial, helvetica, sans-serif;
+			color: #000;
+		}
+		h1, p {
+			text-align: center;
+		}
+		p {
+			margin-top: 100px;
+		}
+		a {
+			font-weight: bold;
+			color: #f00;
+		}
+	</style>
+</head>
+<body>
+
+<a href="javascript:mb.open();">Open box</a>
+
+	<div id="mbox" class="mbox_overlay">
+		<div id="light" class="mbox_border mbox_transparent mbox_round5">
+			<div class="mbox_content">
+				<h2 class="mbox_title">Your company information <span class="mbox_icon mbox_icon_cross"></span></h2>
+				<div class="mbox_main">
+					<form action="#">
+						<ul>
+							<li>
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name">
+							</li>
+							<li>
+								<label for="email">E-mailaddress</label>
+								<input type="text" name="email" id="email">
+							</li>
+							<li>
+								<label for="company">Company</label>
+								<input type="text" name="company" id="company">
+							</li>
+							<li>
+								<label for="website">Website <span>for example: http://www.bubobox.com</span></label>
+								<input type="text" name="website" id="website">
+							</li>
+						</ul>
+				 </form>
+				</div>
+				<div class="mbox_footer">
+					<a href="javascript:mb.close()" class="mbox_button mbox_gray">Skip</a>
+					<a href="#" class="mbox_button mbox_green">Proceed</a>
+				</div>
+</div>
+</div>
+
+		</div>
+	</div>
+
+	<script>
+		function closed() {
+			console.log('closed');
+		}
+		var mb = jQuery("#mbox").microbox({onClosed : closed,
+			width: 356
+		});
+	</script>
+</body>
+</html>
