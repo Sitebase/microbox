@@ -23,6 +23,10 @@
 				 </form>
 				</div>
 				<div class="mbox_footer">
-					<a href="javascript:mb.close()" class="mbox_button mbox_gray">Skip</a>
-					<a href="#" class="mbox_button mbox_green">Proceed</a>
+					<div class="mbox_left">
+						<a href="javascript:mb.close()" class="mbox_button mbox_gray">Skip</a>
+					</div>
+					<div class="mbox_right">
+						<a href="#" class="mbox_button mbox_green">Proceed</a>
+					</div>
 				</div>

@@ -1,3 +1,7 @@
+html, body {
+height: 100%;
+}
+
 .mbox_overlay{
 	-webkit-transform: translateZ(0);
 	left: 0%;
@@ -11,6 +15,7 @@
 	-webkit-transition: opacity 300ms ease-in 100ms; 
 	-moz-transition: opacity 300ms ease-in 100ms;
    -o-transition: opacity 300ms ease-in 100ms;
+-ms-transition: opacity 300ms ease-in 100ms;
    transition: opacity 300ms ease-in 100ms;
 }
 .mbox_loader {
@@ -31,16 +36,17 @@
 	padding: 10px;
 	background: #FFF;
 	z-index:1003;
-	overflow: auto;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	margin-top: -200px;
 	margin-left: -178px;
-	-webkit-transition: all 300ms ease-in 100ms; 
-	-moz-transition: all 300ms ease-in 100ms;
-   -o-transition: all 300ms ease-in 100ms;
-   transition: all 300ms ease-in 100ms;
+	overflow: hidden;
+	-webkit-transition: opacity 300ms ease-in 100ms; 
+	-moz-transition: opacity 300ms ease-in 100ms;
+   -o-transition: opacity 300ms ease-in 100ms;
+-ms-transition: opacity 300ms ease-in 100ms;
+   transition: opacity 300ms ease-in 100ms;
 }
 .mbox_content {
 	word-wrap: break-word;
@@ -71,7 +77,10 @@
 		-khtml-border-radius: 5px;
 		border-radius: 5px;
 	}
-
+.mbox_content ul, .mbox_content li, .mbox_content form {
+	padding: 0;
+	margin: 0;
+}
 .mbox_content .mbox_title {
 	position: relative;
 	margin: 0px;
@@ -123,8 +132,21 @@
 	border-top: solid 1px #DFDFDF;
 	background: #EFEFEF;
 	overflow: hidden;
+	position: relative;
+	height: 22px;
 }
-
+	.mbox_content .mbox_footer .mbox_left{
+		position: absolute;
+		left: 10px;
+		top: 10px;
+		width: 45%;
+	}
+	.mbox_content .mbox_footer .mbox_right {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		width: 45%;
+	}
 
 .mbox_important {
 	color: #333;
@@ -339,6 +361,9 @@
 /*********************************
  * IE FIX
  ********************************/
+.ie6 .mbox_button, .ie7 .mbox_button, .ie8 .mbox_button {
+	letter-spacing: 1px;
+}
 .ie7.mbox_overlay, .ie8.mbox_overlay {
 	background: transparent url('images/black40.png') repeat 0 0;
 }
@@ -352,6 +377,12 @@
 	margin: 0px;
 	top: 50px;
 	left: 50px;
+}
+.ie6 .mbox_main input, .ie7 .mbox_main input {
+	width: 90%;
+}
+.ie6 .mbox_icon {
+	width: 20px;
 }
 
 

@@ -5,7 +5,7 @@
 					
 				</div>
 				<div class="mbox_footer">
-					<a href="javascript:mb.close()" class="mbox_button mbox_gray mbox_left">cancel</a>
-					<a href="#" class="mbox_button mbox_green mbox_right">record my video</a>
+					<div class="mbox_left"><a href="javascript:mb.close()" class="mbox_button mbox_gray">cancel</a></div>
+					<div class="mbox_right"><a href="#" class="mbox_button mbox_green">record my video</a></div>
 				</div>
 

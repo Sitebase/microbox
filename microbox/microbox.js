@@ -1,7 +1,7 @@
 (function( $ ){
 	var f = function() {},
 	default_settings = {
-		transitionDuration: null,
+		transitionDuration: 400,
 		onClosed : f,
 		onOpened : f,
 		onClose : f,
@@ -13,7 +13,7 @@
 
 			// append microbox to DOM
 			var b_class = ($.browser.msie) ? " ie" + jQuery.browser.version.slice(0,1) : "";
-			$("body").append('<div id="mbox" class="mbox_overlay' + b_class + '"><div class="mbox_loader"></div><div id="light" class="mbox_border mbox_transparent mbox_round5"><div class="mbox_content">qsdfqsfqsdf</div></div></div>');
+			$("body").append('<div id="mbox" class="mbox_overlay' + b_class + '"><div class="mbox_loader"></div><div id="light" class="mbox_border mbox_transparent mbox_round5 clearfix"><div class="mbox_content clearfix">qsdfqsfqsdf</div></div></div>');
 
 			// cache elements
 			self = $("#mbox");
@@ -31,15 +31,12 @@
 
 			// binds
 			methods._applyBindings();
-
-			// Get transition duration if needed
-			if(settings.transitionDuration === null) {
-				settings.transitionDuration = methods._getCssTransitionTime();
-			}
 			
 			// check if there is CSS3 transition support
 			use_css3 = methods._cssTransitionSupported();
 
+			methods.redraw();
+			
 			return this;
 
 		},
@@ -49,7 +46,37 @@
 			var height = border.outerHeight();
 
 			// center vertical
-			border.css('margin-top', -Math.floor(height/2));
+			//border.css('margin-top', -Math.floor(height/2));
+			
+			// IE fixes
+			if ($.browser.msie && $.browser.version.substring(0,1) === '6') {
+				self.css({
+					width: $(window).width(),
+					'position': 'absolute'
+				});
+			}
+			
+			// get size
+			var border_height = border.outerHeight();
+			var border_width = border.outerWidth();
+			var loader_height = loader.outerHeight();
+			var loader_width = loader.outerWidth();
+			var width = $(window).width();
+			var height = $(window).height();
+			
+			border.css({
+				margin: 0,
+				position: 'absolute',
+				top: (height/2) - (border_height/2),
+				left: (width/2) - (border_width/2)
+			});
+			
+			loader.css({
+				margin: 0,
+				position: 'absolute',
+				top: (height/2) - (loader_height/2),
+				left: (width/2) - (loader_width/2)
+			});
 
 			// set width
 			border.css('width', settings.width);
@@ -149,6 +176,9 @@
 							self.css('-webkit-transition-duration') || 
 							self.css('-o-transition-duration') || 
 							self.css('transition-duration');
+							
+			// Fix for IE
+			if(isNaN(duration)) duration = 0.3;
 			return Math.floor(parseFloat(duration) * 1000) + 100;
 		},
 	  _applyBindings : function () {

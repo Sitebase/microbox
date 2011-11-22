@@ -31,7 +31,8 @@
 <body>
 
 	<a href="javascript:mb.open(contentLoader);">Open Incentive example</a><br />
-	<a href="javascript:mb.open(formLoader);">Open Form example</a>
+	<a href="javascript:mb.open(formLoader);">Open Form example</a><br />
+	<a href="javascript:mb.open(error);">Open error example</a>
 
 
 	
@@ -47,16 +48,26 @@
 			width: 356
 		});
 		function contentLoader(cb) {
+			var timestamp = Number(new Date());
 			jQuery.ajax({
-				url: "content.php",
+				url: "content.php?" + timestamp,
 				success: function(data){
 					cb.call(this, data);
 				}
 			});
 		}
 		function formLoader(cb) {
+			var timestamp = Number(new Date());
 			jQuery.ajax({
-				url: "form.php",
+				url: "form.php?" + timestamp,
+				success: function(data){
+					cb.call(this, data);
+				}
+			});
+		}
+		function error(cb) {
+			jQuery.ajax({
+				url: "error.php",
 				success: function(data){
 					cb.call(this, data);
 				}
