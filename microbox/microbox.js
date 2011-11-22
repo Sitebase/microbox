@@ -42,20 +42,6 @@
 		},
 		redraw :	function () {
 
-			// get height
-			var height = border.outerHeight();
-
-			// center vertical
-			//border.css('margin-top', -Math.floor(height/2));
-			
-			// IE fixes
-			if ($.browser.msie && $.browser.version.substring(0,1) === '6') {
-				self.css({
-					width: $(window).width(),
-					'position': 'absolute'
-				});
-			}
-			
 			// get size
 			var border_height = border.outerHeight();
 			var border_width = border.outerWidth();
@@ -63,6 +49,14 @@
 			var loader_width = loader.outerWidth();
 			var width = $(window).width();
 			var height = $(window).height();
+			
+			// IE fixes
+			if ($.browser.msie && $.browser.version.substring(0,1) === '6') {
+				self.css({
+					width: width,
+					'position': 'absolute'
+				});
+			}
 			
 			border.css({
 				margin: 0,
